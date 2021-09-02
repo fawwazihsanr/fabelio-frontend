@@ -1,24 +1,27 @@
 import logo from './logo.svg';
 import './App.css';
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch
+} from "react-router-dom";
+import SubmissionCreate from "./components/SubmissionCreate";
+import SubmissionList from "./components/SubmissionList";
+import SubmissionDetail from "./components/SubmissionDetail";
+import Home from "./components/Home";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className={'App'}>
+          <Home/>
+          <Switch>
+              <Route exact path={'/'} component={SubmissionCreate}/>
+              <Route path={'/list'} component={SubmissionList}/>
+              <Route path={'/detail/:id'} component={SubmissionDetail}/>
+          </Switch>
+      </div>
+    </Router>
   );
 }
 
